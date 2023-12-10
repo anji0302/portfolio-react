@@ -1,0 +1,16 @@
+.App {
+  --app-offset: 50px;
+}
+.App .App-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--app-offset);
+  background-color: var(--bg-color);
+  z-index: 1;
+}
+
+.App main {
+  padding-top: var(--app-offset);
+}

@@ -1,0 +1,45 @@
+.Home {
+  height: calc(100vh - 50px);
+}
+.Home .background {
+  background-image: url("../images/background-img.jpg");
+
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.hero-section,
+.hero-section .container {
+  height: 100%;
+}
+.hero-section .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-section .details {
+  width: 60%;
+  padding-right: 20px;
+}
+
+.hero-section .action-btns {
+  display: flex;
+  align-items: center;
+}
+
+.hero-section .action-btns button {
+  margin-right: 24px;
+}
+
+.hero-section .action-btns ul li {
+  list-style: none;
+}
