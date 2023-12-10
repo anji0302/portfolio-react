@@ -1,0 +1,49 @@
+.Header {
+  margin: 4px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+}
+
+.Header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header .logo {
+  line-height: 1;
+}
+
+.Header .logo img {
+  max-width: 110px;
+  max-height: 70px;
+}
+
+.Header .list > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header .list > ul > li {
+  padding: 0.5rem;
+}
+
+.Header ul li a {
+  color: var(--color);
+}
+.Header ul li.current a,
+.Header ul li a:hover {
+  color: var(--color-primary);
+}
+
+.Header ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-family: "Jost", sans-serif;
+
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
