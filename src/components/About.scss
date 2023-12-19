@@ -1,0 +1,58 @@
+.About-Section {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left,
+  .right {
+    width: 50%;
+  }
+
+  .left {
+    margin-right: 2rem;
+  }
+
+  .right {
+    margin-left: 2rem;
+  }
+
+  .image {
+    position: relative;
+
+    img {
+      max-height: 800px;
+    }
+  }
+
+  .block .wrapper {
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+
+    .number {
+      font-size: 50px;
+    }
+
+    .text {
+      font-weight: bold;
+      line-height: 1.25;
+      margin-left: 1rem;
+    }
+  }
+
+  .years {
+    position: absolute;
+    top: 120px;
+    left: -80px;
+  }
+  .projects {
+    position: absolute;
+    bottom: 70px;
+    right: -30px;
+  }
+}

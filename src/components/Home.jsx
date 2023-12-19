@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import "./Home.css";
+import "./Home.scss";
+import myAvatar from "../images/avatar.png";
 
 function Home() {
   return (
@@ -50,8 +51,13 @@ function Home() {
                 </div>
               </div>
             </div>
+
+            <div className="avatar">
+              <div className="image">
+                <img src={myAvatar} alt="avatar" />
+              </div>
+            </div>
           </div>
-          <div className="avatar"></div>
         </div>
       </section>
     </div>
