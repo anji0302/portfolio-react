@@ -19,7 +19,7 @@ function Home() {
               <div className="name mb4">
                 <h1>Anjaneyulu Dhamera</h1>
               </div>
-              <h4 className="job mb4">
+              <h4 className="job">
                 <p>
                   A{" "}
                   <span className="color-green">Senior Software Engineer</span>{" "}

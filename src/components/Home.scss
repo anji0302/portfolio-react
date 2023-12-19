@@ -43,6 +43,10 @@
         font-size: 28px;
         color: var(--color);
       }
+
+      a {
+        font-size: inherit !important;
+      }
     }
 
     .text {
@@ -78,5 +82,52 @@
   }
   .hero-section .avatar img {
     max-height: 650px;
+  }
+
+  @media (max-width: 1040px) {
+    .hero-section {
+      .content {
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+
+      .details {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+
+      .details .hello h3 {
+        font-size: 21px;
+      }
+
+      .details .name h1 {
+        font-size: 42px;
+      }
+    }
+    .hero-section .details .job {
+      margin-bottom: 23px;
+      p {
+        font-size: 23px;
+      }
+    }
+
+    .hero-section .details .text {
+      margin-bottom: 30px;
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .hero-section .avatar {
+      padding: 0px;
+      width: auto;
+      margin-bottom: 30px;
+      zoom: normal;
+    }
+
+    .hero-section .action-btns {
+      justify-content: center;
+    }
   }
 }

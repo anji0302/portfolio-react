@@ -42,7 +42,7 @@ function About() {
           </div>
           <div className="right">
             <div className="">
-              <div className="">
+              <div className="dev-text">
                 <h4 className="color-primary">I'm a Developer</h4>
               </div>
               <div className="title mb2">

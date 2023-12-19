@@ -71,4 +71,52 @@
   .title h2 {
     font-size: 48px;
   }
+
+  @media (max-width: 1040px) {
+    .brush_1,
+    .brush_2 {
+      display: none;
+    }
+
+    .wrapper {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .left {
+      margin-right: 0px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .image img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+    .years,
+    .projects {
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .right {
+      width: 100%;
+      margin: 0px;
+    }
+
+    .dev-text h4 {
+      font-size: 20px;
+    }
+
+    .title h2 {
+      font-size: 35px;
+      max-width: 100%;
+    }
+  }
 }
