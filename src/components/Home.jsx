@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Home.scss";
 import myAvatar from "../images/avatar.png";
+import { GOOGLE_MAP_LINK } from "../constants/system.constants";
 
 function Home() {
   return (
@@ -22,10 +23,17 @@ function Home() {
                 <p>
                   A{" "}
                   <span className="color-green">Senior Software Engineer</span>{" "}
-                  From <span className="color-yellow">Bentonville, AR </span>
+                  from{" "}
+                  <span className="external-link">
+                    <a href={GOOGLE_MAP_LINK} target="_blank" rel="noreferrer">
+                      Bentonville, AR
+                    </a>
+                    &nbsp;
+                    <i className="fa fa-external-link" aria-hidden="true"></i>
+                  </span>
                 </p>
               </h4>
-              <div className="text mb2">
+              <div className="text">
                 <p>
                   A passionate full stack developer with a commitment to
                   continuous improvement.

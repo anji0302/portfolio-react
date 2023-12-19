@@ -4,6 +4,7 @@
 
   --bg-color: #2b2d33;
   --color: #fff;
+  --color-light-voilet: #b9b5c9;
 
   --bg-gray: #4b4f5c;
   --color-primary: rgb(246, 80, 35);
@@ -71,32 +72,33 @@ h6 {
 }
 
 h1 {
-  font-size: 2.813rem;
+  font-size: 45px;
 }
 h2 {
-  font-size: 2.25rem;
+  font-size: 36px;
 }
 h3 {
-  font-size: 1.875rem;
+  font-size: 30px;
 }
 h4 {
-  font-size: 1.5rem;
+  font-size: 24px;
 }
 h5 {
-  font-size: 1.25rem;
+  font-size: 20px;
 }
 h6 {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 18px;
   line-height: 1.5;
   font-family: var(--font-open-sans);
+  color: var(--color-light-voilet);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -139,12 +141,30 @@ p {
   margin-bottom: 0.25rem;
 }
 
-i {
-  color: var(--color);
+.external-link {
+  a {
+    font-family: var(--font-jost);
+    color: var(--color-yellow);
+  }
+
+  &:hover a {
+    color: var(--color-primary);
+  }
+
+  &:hover i {
+    color: var(--color-primary);
+  }
+  i {
+    text-decoration: none;
+    color: var(--color-yellow);
+  }
 }
 
-i:hover {
-  color: var(--color-primary);
+i {
+  color: var(--color);
+  &:hover {
+    color: var(--color-primary);
+  }
 }
 
 img {

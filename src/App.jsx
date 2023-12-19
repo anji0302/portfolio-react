@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import mylogo from "./images/mylogo.png";
 import "./components/Header.scss";
 import { useRef } from "react";
+import { RESUME_LINK } from "./constants/system.constants";
 
 function App() {
   const homeRef = useRef(null);
@@ -42,6 +43,12 @@ function App() {
                 <li>
                   <a href="#contact" onClick={executeScroll(contactRef)}>
                     Contact
+                  </a>
+                </li>
+                <li>
+                  <a href={RESUME_LINK} target="_blank" rel="noreferrer">
+                    Résumé &nbsp;
+                    <i className="fa fa-external-link" aria-hidden="true"></i>
                   </a>
                 </li>
               </ul>
