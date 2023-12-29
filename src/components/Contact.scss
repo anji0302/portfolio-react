@@ -8,6 +8,7 @@
   .contact-card-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     .contact-card {
       font-family: var(--font-jost);
