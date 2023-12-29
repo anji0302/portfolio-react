@@ -3,7 +3,8 @@ import "./Home.scss";
 import myAvatar from "../images/avatar.png";
 import { GOOGLE_MAP_LINK } from "../constants/system.constants";
 
-function Home() {
+function Home(props) {
+  console.log(props);
   return (
     <div className="Home">
       <section className="hero-section">
@@ -40,7 +41,10 @@ function Home() {
                 </p>
               </div>
               <div className="action-btns">
-                <button className="btn btn-1 hover-filled-slide-down">
+                <button
+                  className="btn btn-1 hover-filled-slide-down"
+                  onClick={props.executeScroll(props.aboutRef)}
+                >
                   <span>About Me</span>
                 </button>
 

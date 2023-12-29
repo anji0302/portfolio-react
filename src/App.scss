@@ -1,16 +1,53 @@
 .App {
   --app-offset: 100px;
 }
-.App .App-header {
+.App .App-header,
+.mobile-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--app-offset);
-  background-color: var(--bg-color);
   z-index: 1;
+}
+
+.App .App-header {
+  background-color: transparent;
+}
+
+.App-header .Header {
+  padding: 25px 0;
+  box-shadow: none;
+}
+
+.App .App-header.add-bg {
+  background-color: var(--bg-color);
+
+  .Header {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+  }
 }
 
 .App main {
   padding-top: var(--app-offset);
+}
+
+.mobile-header {
+  background-color: var(--bg-color);
+  height: auto;
+  // height: 50px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1040px) {
+  .App .App-header {
+    display: none;
+  }
+}
+@media (min-width: 1041px) {
+  .mobile-header {
+    display: none;
+  }
 }
