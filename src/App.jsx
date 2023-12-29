@@ -9,31 +9,77 @@ import "./components/Header.scss";
 import { useRef, useState, useEffect } from "react";
 import { RESUME_LINK } from "./constants/system.constants";
 
+const navbarItems = [
+  {
+    text: "Home",
+    className: "App-home",
+    htmlElement: <Home />,
+  },
+  {
+    text: "About",
+    className: "App-about",
+    htmlElement: <About />,
+  },
+  {
+    text: "Skills",
+    className: "App-skills",
+    htmlElement: <Skills />,
+  },
+  {
+    text: "Contact",
+    className: "App-contact",
+    htmlElement: <Contact />,
+  },
+];
+
 function App() {
+  // ########### Start:Change navbar bg ##########
   const [navBg, setNavBg] = useState(false);
-
   const changeNavBg = () => {
-    window.scrollY >= 250 ? setNavBg(true) : setNavBg(false);
+    window.scrollY >= 100 ? setNavBg(true) : setNavBg(false);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", changeNavBg);
     return () => {
       window.removeEventListener("scroll", changeNavBg);
     };
   }, []);
+  // ########### End: Change navbar bg ##########
 
-  const homeRef = useRef(null);
-  const aboutRef = useRef(null);
-  const skillsRef = useRef(null);
-  const contactRef = useRef(null);
-  const executeScroll = (ref) => () => {
-    console.log(ref);
-    ref?.current?.scrollIntoView({
+  const observerRefs = useRef([]);
+  const [visibleKey, setVisibleKey] = useState(0);
+  const observers = useRef([]);
+
+  const scrollToView = (item, key) => {
+    observerRefs?.current[key]?.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
+    setVisibleKey(key);
   };
+
+  // const observerCallback = async (e, key) => {
+  //   if (e.length && e[0].isIntersecting) {
+  //     setVisibleKey(key);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (observerRefs.current?.length && observers.current) {
+  //     console.log(observerRefs.current);
+  //     Array.from(Array(navbarItems.length).keys()).forEach((_u, key) => {
+  //       observers.current[key] = new IntersectionObserver((e) =>
+  //         observerCallback(e, key)
+  //       );
+  //       if (observerRefs.current[key]) {
+  //         observers.current[key].observe(observerRefs.current[key]);
+  //       }
+  //     });
+  //   }
+  //   return () =>
+  //     observers.current?.forEach((observer) => observer?.current?.disconnect());
+  // }, [observerRefs, observers]);
+
   return (
     <div className="App">
       <div className="mobile-header">
@@ -58,26 +104,22 @@ function App() {
 
             <div className="list">
               <ul className="clean-list">
-                <li className="current">
-                  <a href="#home" onClick={executeScroll(homeRef)}>
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" onClick={executeScroll(aboutRef)}>
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#skills" onClick={executeScroll(skillsRef)}>
-                    Skills
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" onClick={executeScroll(contactRef)}>
-                    Contact
-                  </a>
-                </li>
+                {navbarItems.map((item, key) => {
+                  return (
+                    <li
+                      name={item.text.toLowerCase()}
+                      key={`item-${key}`}
+                      className={`${key === visibleKey ? "  current" : ""}`}
+                      onClick={() => scrollToView(item, key)}
+                    >
+                      <a href={`#${item.text.toLowerCase()}`}>
+                        <span className="text">{item.text}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+
+                {/* Resume hyperlink */}
                 <li>
                   <a href={RESUME_LINK} target="_blank" rel="noreferrer">
                     Résumé &nbsp;
@@ -91,18 +133,18 @@ function App() {
       </header>
 
       <main>
-        <section className="App-home" ref={homeRef}>
-          <Home executeScroll={executeScroll} aboutRef={aboutRef} />
-        </section>
-        <section className="App-about" ref={aboutRef}>
-          <About />
-        </section>
-        <section className="App-skills" ref={skillsRef}>
-          <Skills />
-        </section>
-        <section className="App-contact" ref={contactRef}>
-          <Contact />
-        </section>
+        {navbarItems.map((item, key) => {
+          return (
+            <section
+              name={item.text.toLowerCase()}
+              key={`section-${key}`}
+              className={item.className}
+              ref={(el) => (observerRefs.current[key] = el)}
+            >
+              {item.htmlElement}
+            </section>
+          );
+        })}
       </main>
     </div>
   );
