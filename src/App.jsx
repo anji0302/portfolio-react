@@ -9,29 +9,6 @@ import "./components/Header.scss";
 import { useRef, useState, useEffect } from "react";
 import { RESUME_LINK } from "./constants/system.constants";
 
-const navbarItems = [
-  {
-    text: "Home",
-    className: "App-home",
-    htmlElement: <Home />,
-  },
-  {
-    text: "About",
-    className: "App-about",
-    htmlElement: <About />,
-  },
-  {
-    text: "Skills",
-    className: "App-skills",
-    htmlElement: <Skills />,
-  },
-  {
-    text: "Contact",
-    className: "App-contact",
-    htmlElement: <Contact />,
-  },
-];
-
 function App() {
   // ########### Start:Change navbar bg ##########
   const [navBg, setNavBg] = useState(false);
@@ -51,34 +28,63 @@ function App() {
   const observers = useRef([]);
 
   const scrollToView = (item, key) => {
+    console.log(observerRefs?.current[key]);
+    setVisibleKey(key);
+
     observerRefs?.current[key]?.scrollIntoView({
       behavior: "smooth",
       block: "center",
+      inline: "nearest",
     });
-    setVisibleKey(key);
   };
 
-  // const observerCallback = async (e, key) => {
-  //   if (e.length && e[0].isIntersecting) {
-  //     setVisibleKey(key);
-  //   }
-  // };
+  const observerCallback = async (e, key) => {
+    console.log(e);
+    if (e.length && e[0].isIntersecting) {
+      setVisibleKey(key);
+      console.log(key);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (observerRefs.current?.length && observers.current) {
-  //     console.log(observerRefs.current);
-  //     Array.from(Array(navbarItems.length).keys()).forEach((_u, key) => {
-  //       observers.current[key] = new IntersectionObserver((e) =>
-  //         observerCallback(e, key)
-  //       );
-  //       if (observerRefs.current[key]) {
-  //         observers.current[key].observe(observerRefs.current[key]);
-  //       }
-  //     });
-  //   }
-  //   return () =>
-  //     observers.current?.forEach((observer) => observer?.current?.disconnect());
-  // }, [observerRefs, observers]);
+  const navbarItems = [
+    {
+      text: "Home",
+      className: "App-home",
+      htmlElement: <Home />,
+    },
+    {
+      text: "About",
+      className: "App-about",
+      htmlElement: <About />,
+    },
+    {
+      text: "Skills",
+      className: "App-skills",
+      htmlElement: <Skills />,
+    },
+    {
+      text: "Contact",
+      className: "App-contact",
+      htmlElement: <Contact />,
+    },
+  ];
+
+  useEffect(() => {
+    if (observerRefs.current?.length && observers.current) {
+      console.log(observerRefs.current);
+      Array.from(Array(navbarItems.length).keys()).forEach((_u, key) => {
+        observers.current[key] = new IntersectionObserver(
+          (e) => observerCallback(e, key),
+          { threshold: 1 }
+        );
+        if (observerRefs.current[key]) {
+          observers.current[key].observe(observerRefs.current[key]);
+        }
+      });
+    }
+    return () =>
+      observers.current?.forEach((observer) => observer?.current?.disconnect());
+  }, [observerRefs, observers]);
 
   return (
     <div className="App">

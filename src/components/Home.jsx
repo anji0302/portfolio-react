@@ -1,10 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Home.scss";
 import myAvatar from "../images/avatar.png";
-import { GOOGLE_MAP_LINK } from "../constants/system.constants";
+import {
+  GOOGLE_MAP_LINK,
+  LINKED_IN,
+  GITHUB,
+} from "../constants/system.constants";
 
-function Home() {
-  // console.log(props);
+function Home(props) {
+  console.log(props);
   return (
     <div className="Home">
       <section className="hero-section">
@@ -43,7 +47,9 @@ function Home() {
               <div className="action-btns">
                 <button
                   className="btn btn-1 hover-filled-slide-down"
-                  // onClick={props.executeScroll(props.aboutRef)}
+                  onClick={() =>
+                    document.querySelectorAll('[href="#about"]')[0].click()
+                  }
                 >
                   <span>About Me</span>
                 </button>
@@ -51,12 +57,13 @@ function Home() {
                 <div className="social">
                   <ul>
                     <li>
-                      <a
-                        href="https://www.linkedin.com/in/dhamera/"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
+                      <a href={LINKED_IN} target="_blank" rel="noreferrer">
                         <i className="fa-brands fa-linkedin"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={GITHUB} target="_blank" rel="noreferrer">
+                        <i className="fa-brands fa-github"></i>
                       </a>
                     </li>
                   </ul>
