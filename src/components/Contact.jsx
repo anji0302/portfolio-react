@@ -1,13 +1,6 @@
 import "./Contact.scss";
 import { EMAIL_ADDRESS, LINKED_IN } from "../constants/system.constants";
 
-const CONTACTS = [
-  {
-    icon: "fa-brands fa-linkedin",
-    text: "LinkedIn",
-    value: "",
-  },
-];
 function Contact() {
   return (
     <section className="Contact-section container">
